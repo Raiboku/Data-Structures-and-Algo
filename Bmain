@@ -1,0 +1,37 @@
+public class Bmain {
+    BNode link;
+    BNode root;
+   
+        private BNode Insert(BNode link, int A){
+            if (link == null){
+                return new BNode(A);
+            }else if (A > link.A){
+                    link.Right = Insert(link.Right, A);
+                    
+            }else if (A < link.A){
+                    link.Left = Insert(link.Left, A);
+                    
+            }else{
+                  return link;  
+            }
+            return link;
+        }
+        
+        public void add(int value) {
+            root = Insert(root, value);
+        }
+        
+        void displayPreorder(BNode link){
+           
+           if(link == null){
+               return;
+           }
+               System.out.println(link.A + " ");
+               displayPreorder(link.Left);
+               displayPreorder(link.Right);
+               
+        }
+        void printPreorder(){
+            displayPreorder(root);
+        }
+}
